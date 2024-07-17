@@ -1,0 +1,16 @@
+.searchBar {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  gap: 10px;
+  overflow: hidden;
+  background-color: rgb(213, 232, 255);
+  padding: 10px;
+
+  box-shadow: 1px 1px 0px 2px white, 1px 1px 11px -2px white inset;
+  input {
+    outline: none;
+    border: none;
+    background-color: transparent;
+  }
+}

@@ -1,12 +1,12 @@
-import React from "react";
 import { getInitials } from "../../utils/helper";
+import "./card.scss";
 
 const ProfileInfo = ({ onLogOut }) => {
   return (
-    <div>
+    <div className="profileInfo">
       <div>{getInitials("Shahzod Ibragimov")}</div>
 
-      <div>
+      <div className="profileInfo_name">
         <p>Shahzod</p>
         <button onClick={onLogOut}>logout</button>
       </div>

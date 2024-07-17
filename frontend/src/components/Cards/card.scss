@@ -1,0 +1,42 @@
+.profileInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  &_name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.noteCard {
+  border: 0.5px solid lightgray;
+  padding: 10px;
+  border-radius: 15px;
+
+  &_title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    &_text {
+      margin-bottom: 10px;
+      h6 {
+        margin-bottom: 5px;
+      }
+    }
+  }
+  P {
+    margin: 10px;
+    font-size: 20px;
+  }
+  &_tags {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &_buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}

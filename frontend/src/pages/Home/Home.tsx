@@ -17,34 +17,18 @@ const Home = () => {
     <>
       <Navbar />
 
-      <div>
-        <div>
-          <NoteCard
-            title="Just normal title"
-            date="3rd Apr 2024"
-            content="Meeting on 7th April "
-            tags="#meeting"
-            isPinned={true}
-            onEdit={() => {}}
-            onDelete={() => {}}
-            onPinNote={() => {}}
-          />
+      <div className="noteCardHolder">
+        <div className="noteCardHolder_allBox">
+          <NoteCard title="Just normal title" date="3rd Apr 2024" content="Meeting on 7th April " tags="#meeting" isPinned={true} onEdit={() => {}} onDelete={() => {}} onPinNote={() => {}} />
+          <NoteCard title="Just normal title" date="3rd Apr 2024" content="Meeting on 7th April " tags="#meeting" isPinned={true} onEdit={() => {}} onDelete={() => {}} onPinNote={() => {}} />
         </div>
       </div>
 
-      <button
-        onClick={() =>
-          setOpenAddEditModal({ isShowm: true, type: "add", data: null })
-        }>
-        <MdAdd />
+      <button onClick={() => setOpenAddEditModal({ isShowm: true, type: "add", data: null })} className="newNoteAddButton">
+        <MdAdd className="icon" />
       </button>
 
-      <Modal
-        isOpen={openAddEditModal.isShowm}
-        onRequestClose={() => {}}
-        style={{ overlay: { backgroundColor: "rgba(0,0,0,0.2" } }}
-        contentLabel="">
-          
+      <Modal className="modal" isOpen={openAddEditModal.isShowm} onRequestClose={() => {}} style={{ overlay: { backgroundColor: "rgba(0,0,0,0.2" } }} contentLabel="">
         <AddEditNotes
           type={openAddEditModal.type}
           noteData={openAddEditModal.data}

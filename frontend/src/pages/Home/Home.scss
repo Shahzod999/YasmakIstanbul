@@ -1,0 +1,81 @@
+.noteCardHolder {
+  &_allBox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #fff;
+  }
+}
+.newNoteAddButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgb(0, 179, 255);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+
+  .icon {
+    font-size: 20px;
+  }
+}
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  backdrop-filter: blur(1px);
+  &_addEditNotes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+
+    &_close {
+      background-color: rgb(255, 125, 125);
+    }
+    &_add {
+      background-color: rgb(125, 183, 255);
+    }
+
+    &_close,
+    &_add {
+      border: none;
+      padding: 10px;
+    }
+    &_title,
+    &_content,
+    &_tags {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-weight: 500;
+    }
+    &_title {
+      input {
+        border: none;
+        border-bottom: 1px solid black;
+        outline: none;
+      }
+    }
+    &_content {
+    }
+    &_tags {
+    }
+  }
+}

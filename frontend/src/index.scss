@@ -3,3 +3,12 @@
 :root {
   --font-family--: "Poppins", sans-serif;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family--);
+}
+.container {
+  padding: 0 100px;
+}

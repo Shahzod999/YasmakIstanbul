@@ -7,7 +7,7 @@ const AddEditNotes = ({ noteData, type, onClose }) => {
   const [content, setContent] = useState("");
   const [tags, setTags] = useState([]);
 
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   const addNewNote = async () => {};
 
@@ -32,39 +32,30 @@ const AddEditNotes = ({ noteData, type, onClose }) => {
   };
 
   return (
-    <div>
-      <button onClick={onClose}>
+    <div className="modal_addEditNotes">
+      <button onClick={onClose} className="modal_addEditNotes_close">
         <MdClose />
       </button>
 
-      <div>
+      <div className="modal_addEditNotes_title">
         <label htmlFor="">Title</label>
-        <input
-          type="text"
-          placeholder="Tye your task"
-          value={title}
-          onChange={({ target }) => setTitle(target.value)}
-        />
+        <input type="text" placeholder="Tye your task" value={title} onChange={({ target }) => setTitle(target.value)} />
       </div>
 
-      <div>
+      <div className="modal_addEditNotes_content">
         <label htmlFor="">Content</label>
-        <textarea
-          type="text"
-          rows={10}
-          placeholder="Content"
-          value={content}
-          onChange={({ target }) => setContent(target.value)}
-        />
+        <textarea type="text" rows={10} placeholder="Content" value={content} onChange={({ target }) => setContent(target.value)} />
       </div>
 
-      <div>
+      <div className="modal_addEditNotes_tags">
         <label htmlFor="">Tags</label>
         <TagInput tags={tags} setTags={setTags} />
       </div>
 
       {error && <p>{error}</p>}
-      <button onClick={handleAddNote}>Add</button>
+      <button onClick={handleAddNote} className="modal_addEditNotes_add">
+        Add
+      </button>
     </div>
   );
 };

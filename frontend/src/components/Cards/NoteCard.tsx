@@ -2,9 +2,9 @@ import { MdOutlinePushPin, MdCreate, MdDelete } from "react-icons/md";
 
 const NoteCard = ({ title, date, content, tags, isPinned, onEdit, onDelete, onPinNote }) => {
   return (
-    <div>
-      <div>
-        <div>
+    <div className="noteCard">
+      <div className="noteCard_title">
+        <div className="noteCard_title_text">
           <h6>{title}</h6>
           <span>{date}</span>
         </div>
@@ -14,9 +14,9 @@ const NoteCard = ({ title, date, content, tags, isPinned, onEdit, onDelete, onPi
 
       <p>{content?.slice(0, 60)}</p>
 
-      <div>
+      <div className="noteCard_tags">
         <div>{tags}</div>
-        <div>
+        <div className="noteCard_tags_buttons">
           <MdCreate onClick={onEdit} />
           <MdDelete onClick={onDelete} />
         </div>

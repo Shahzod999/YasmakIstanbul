@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import ProfileInfo from "../Cards/ProfileInfo";
 import SearchBar from "../SearchBar/SearchBar";
 import { useState } from "react";
+import "./navbar.scss";
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -20,19 +21,21 @@ const Navbar = () => {
   };
 
   return (
-    <div>
-      <h2>Notes</h2>
+    <div className="container">
+      <div className="navbar">
+        <h2>Notes</h2>
 
-      <SearchBar
-        value={searchQuery}
-        onChange={({ target }) => {
-          setSearchQuery(target.value);
-        }}
-        handleSearch={handleSearch}
-        onClearSearch={onClearSearch}
-      />
+        <SearchBar
+          value={searchQuery}
+          onChange={({ target }) => {
+            setSearchQuery(target.value);
+          }}
+          handleSearch={handleSearch}
+          onClearSearch={onClearSearch}
+        />
 
-      <ProfileInfo onLogOut={onLogOut} />
+        <ProfileInfo onLogOut={onLogOut} />
+      </div>
     </div>
   );
 };
