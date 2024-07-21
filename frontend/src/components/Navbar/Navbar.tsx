@@ -4,20 +4,26 @@ import SearchBar from "../SearchBar/SearchBar";
 import { useState } from "react";
 import "./navbar.scss";
 
-const Navbar = () => {
+const Navbar = ({ userInfo, onSearchNote, handleClearSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
   const onLogOut = () => {
+    localStorage.clear();
     navigate("/login");
   };
 
   const handleSearch = () => {
-    console.log("nice");
+    if (searchQuery) {
+      onSearchNote(searchQuery);
+    } else {
+      handleClearSearch();
+    }
   };
 
   const onClearSearch = () => {
     setSearchQuery("");
+    handleClearSearch();
   };
 
   return (
@@ -34,7 +40,7 @@ const Navbar = () => {
           onClearSearch={onClearSearch}
         />
 
-        <ProfileInfo onLogOut={onLogOut} />
+        <ProfileInfo userInfo={userInfo} onLogOut={onLogOut} />
       </div>
     </div>
   );

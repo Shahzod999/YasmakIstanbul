@@ -1,17 +1,55 @@
 import React, { useState } from "react";
 import TagInput from "../../components/Input/TagInput";
 import { MdClose } from "react-icons/md";
+import axiosInstance from "../../utils/axiosInstance.";
 
-const AddEditNotes = ({ noteData, type, onClose }) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [tags, setTags] = useState([]);
+const AddEditNotes = ({ noteData, type, onClose, getAllNotes, showToastMessage }) => {
+  const [title, setTitle] = useState(noteData?.title || "");
+  const [content, setContent] = useState(noteData?.content || "");
+  const [tags, setTags] = useState(noteData?.tags || []);
 
   const [error, setError] = useState<string | null>(null);
 
-  const addNewNote = async () => {};
+  //Add Note
+  const addNewNote = async () => {
+    try {
+      const response = await axiosInstance.post("/add-note", {
+        title,
+        content,
+        tags,
+      });
+      if (response.data && response.data.note) {
+        showToastMessage("Note added successfully");
+        getAllNotes();
+        onClose();
+      }
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
+        setError(error.response.data.message);
+      }
+    }
+  };
+  //Edit Note
+  const editNote = async () => {
+    const noteId = noteData._id;
 
-  const editNote = async () => {};
+    try {
+      const response = await axiosInstance.put("/edit-note/" + noteId, {
+        title,
+        content,
+        tags,
+      });
+      if (response.data && response.data.note) {
+        showToastMessage("Note updated successfully");
+        getAllNotes();
+        onClose();
+      }
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
+        setError(error.response.data.message);
+      }
+    }
+  };
 
   const handleAddNote = () => {
     if (!title) {
@@ -54,7 +92,7 @@ const AddEditNotes = ({ noteData, type, onClose }) => {
 
       {error && <p>{error}</p>}
       <button onClick={handleAddNote} className="modal_addEditNotes_add">
-        Add
+        {type === "edit" ? "UPDATE" : "Add"}
       </button>
     </div>
   );

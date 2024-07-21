@@ -1,13 +1,13 @@
 import { getInitials } from "../../utils/helper";
 import "./card.scss";
 
-const ProfileInfo = ({ onLogOut }) => {
+const ProfileInfo = ({ userInfo, onLogOut }) => {
   return (
     <div className="profileInfo">
-      <div>{getInitials("Shahzod Ibragimov")}</div>
+      <div>{getInitials(userInfo?.fullName)}</div>
 
       <div className="profileInfo_name">
-        <p>Shahzod</p>
+        <p>{userInfo?.fullName}</p>
         <button onClick={onLogOut}>logout</button>
       </div>
     </div>
