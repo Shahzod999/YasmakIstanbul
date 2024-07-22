@@ -296,16 +296,13 @@ app.get("/search-notes/", authenticateToken, async (req, res) => {
   try {
     const matchingNotes = await Note.find({
       userId: user._id,
-      $or: [
-        { title: { $regex: new RegExp(query, "i") } },
-        { content: { $regex: new RegExp(query, "i") } },
-      ],
+      $or: [{ title: { $regex: new RegExp(query, "i") } }, { content: { $regex: new RegExp(query, "i") } }],
     });
     return res.json({
       error: false,
       notes: matchingNotes,
-      message: "Notes matching the search query retrieved successfully"
-    })
+      message: "Notes matching the search query retrieved successfully",
+    });
   } catch (error) {
     return res.status(500).json({ error: true, message: "Internal Server Error" });
   }

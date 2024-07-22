@@ -11,6 +11,11 @@ import Toast from "../../components/ToastMessage/Toast";
 import EmptyCard from "../../components/EmptyCard/EmptyCard";
 
 const Home = () => {
+  const [allNotes, setAllNotes] = useState([]);
+  const [userInfo, setUserInfo] = useState(null);
+  const [isSearch, setIsSearch] = useState(false);
+  const navigate = useNavigate();
+
   const [openAddEditModal, setOpenAddEditModal] = useState({
     isShowm: false,
     type: "add",
@@ -22,11 +27,6 @@ const Home = () => {
     message: "",
     type: "add",
   });
-  const [allNotes, setAllNotes] = useState([]);
-  const [userInfo, setUserInfo] = useState(null);
-  const [isSearch, setIsSearch] = useState(false);
-
-  const navigate = useNavigate();
 
   const handleEdit = (noteDetails) => {
     setOpenAddEditModal({ isShowm: true, data: noteDetails, type: "edit" });
